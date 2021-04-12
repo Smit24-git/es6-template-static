@@ -17,7 +17,7 @@ module.exports = class extends Page {
             <h2>${oEntity.title}</h2>
             <p><img src="${oEntity.featured_image}" style="width:250px;height:150px" alt="${oEntity.title}"</p>
             <p>${oEntity.full_description}</p>
-            <form action="http://localhost:3002/payment" method="post" target='_blank'>
+            <form action="https://dinnerchatbot.herokuapp.com/payment" method="post" target='_blank'>
             <input type="hidden" value="${oEntity.title}" name="title" id="title"/>
             <input type="tel" name="phone" placeholder="enter your number" />
             <button type="submit">Order now</button>
