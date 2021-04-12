@@ -6,7 +6,7 @@ module.exports = class extends Page {
         super({title:"Home", sName:"Richard Hildred"});
     }
     render(sPage) {
-        const oJson = fetch("https://ux308winter2021-default-rtdb.firebaseio.com/meals.json").json();
+        const oJson = fetch("https://fir-todo-4f614-default-rtdb.firebaseio.com/meals.json").json();
         console.log(oJson);
         let sResult = "<h1>Upcoming Popup Meals</h1>";
         Object.keys(oJson).map((key) => {
@@ -15,11 +15,11 @@ module.exports = class extends Page {
             oEntity.id = key;
             sResult += `
             <h2>${oEntity.title}</h2>
-            <p><img src="${oEntity.featured_image}" alt="${oEntity.title}"</p>
+            <p><img src="${oEntity.featured_image}" style="width:250px;height:150px" alt="${oEntity.title}"</p>
             <p>${oEntity.full_description}</p>
-            <form action="http://localhost:3001/payment" method="post">
-            <input type="hidden" value="${oEntity.title}" />
-            <input type="tel" placeholder="enter your number" />
+            <form action="http://localhost:3002/payment" method="post" target='_blank'>
+            <input type="hidden" value="${oEntity.title}" name="title" id="title"/>
+            <input type="tel" name="phone" placeholder="enter your number" />
             <button type="submit">Order now</button>
             </form>
             `;
